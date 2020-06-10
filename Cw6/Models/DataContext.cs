@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cw6.Models
@@ -28,7 +29,14 @@ namespace Cw6.Models
             var dictPatient = new List<Patient>();
             var dictPrescrtiption = new List<Prescription>();
             var dictPrescrtiptionMedicament = new List<PrescriptionMedicament>();
-            //dictStudies.Add(new Studies { IdStudies = 1, Name = "IT", Description = "AAA" });
+            dictDoctor.Add(new Doctor {IdDoctor = 1, FirstName = "Tadeusz", LastName = "Twardy", Email = "brak"});
+            dictDoctor.Add(new Doctor {IdDoctor = 2, FirstName = "Jan", LastName = "Miazga", Email = "miazga@miazga.pl"});
+            dictPatient.Add(new Patient {idPatient = 1, FirstName = "Edek", LastName = "Kluska", BirthDate = new DateTime(1993, 11, 5)});
+            dictPatient.Add(new Patient {idPatient = 2, FirstName = "Józek", LastName = "A"});
+            modelBuilder.Entity<Doctor>()
+                .HasData(dictDoctor);
+            modelBuilder.Entity<Patient>()
+                .HasData(dictPatient);
         }
     }
 }
